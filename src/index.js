@@ -1,6 +1,7 @@
 //require('dotenv').config({path: './.env'});
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
+import {app} from "./app.js";
 
 
 dotenv.config({
@@ -11,13 +12,19 @@ dotenv.config({
 // this 2nd approach is recommended
 
 connectDB()
+.then(() => {   // 2 isme app ka use karke server ko listen karwa rahe hai matlab server ko start kar rahe hai
+    app.on("Error", (error) => { // ye app.listen ke andar nahi hai kyuki agar error aata hai toh server start nahi hoga.. yah event k liye listen kar rahe hai error
+        console.log("Error: ", error);
+        throw error
+       })
 
-
-
-
-
-
-
+    app.listen(process.env.PORT || 8000, () => {  //2
+        console.log(`Server is running at port ${process.env.PORT}`);
+    })
+})
+.catch((err) =>{
+    console.log("MONGO db connection failed !!! ", err);
+})
 
 
 
