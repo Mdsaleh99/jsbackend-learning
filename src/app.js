@@ -4,10 +4,10 @@ import cookieParser from "cookie-parser";
 
 const app = express()
 
-app.use({  // https://www.npmjs.com/package/cors   iss link pe jaake aur information le sakte hai
+app.use(cors({  // https://www.npmjs.com/package/cors   iss link pe jaake aur information le sakte hai
     origin: process.env.CORS_ORIGIN,
     credentials: true
-})
+}))
 
 
 // jab bhi middleware use karte hai to most of the time 'app.use()' ka use karte hai. yeh tab use karte hai jab hume middleware aur configration setting karni ho.
