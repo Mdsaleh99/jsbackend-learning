@@ -1,4 +1,4 @@
-import multer from "multer";   // multer and jwt documentation github se dekhna hai complusor
+import multer from "multer";   // multer and jwt documentation github se dekhna hai complusory
 
 
 // yah pe diskstorage ka use kiya hai ....   https://github.com/expressjs/multer/blob/master/README.md
