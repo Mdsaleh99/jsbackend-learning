@@ -18,11 +18,17 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}))  // https://express
 app.use(express.static("public"))  // https://expressjs.com/en/5x/api.html#express.static 
 // yeh 3 major configration end
 
-
-
 app.use(cookieParser())
 
 
+
+
+// routes import
+import userRouter from './routes/user.routes.js';
+
+
+// routes decleartion
+app.use("/api/v1/users", userRouter)  // yah jaise hi /users pe url hit hota hai control userRouter ko pass hota hai handle karne k liye
 
 export { app }
 
