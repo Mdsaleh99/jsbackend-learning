@@ -54,7 +54,7 @@ const userSchema = new Schema(
 userSchema.pre("save", async function(next) {
     if(!this.isModified("password")) return next()  // isModified ek mongoose method hai aur yah method hume yah batata hai ki password field me kuch change hua hai ya nahi
     
-    this.password = bcrypt.hash(this.password, 10)  //10 is the salt round and salt round is the number of time the password is hashed 
+    this.password = await bcrypt.hash(this.password, 10)  //10 is the salt round and salt round is the number of time the password is hashed 
     next()
 } )
 
