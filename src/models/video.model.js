@@ -4,7 +4,7 @@ import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 
 const videoSchema = new Schema(
     {
-        viedoFile: {
+        videoFile: {
             type: String,  // cloudnary url
             required: true
         },
@@ -39,7 +39,7 @@ const videoSchema = new Schema(
     }, { timestamps: true }
 )
 
-videoSchema.plugin(mongooseAggregatePaginate)  // https://www.npmjs.com/package/mongoose-aggregate-paginate-v2 and mongoose option deta hai own plugin add karne ko o hai 'plugin'
+videoSchema.plugin(mongooseAggregatePaginate)  // https://www.npmjs.com/package/mongoose-aggregate-paginate-v2 and mongoose option deta hai own plugin add karne ka o hai 'plugin'
 export const Video = mongoose.model("Video", videoSchema)
 
 // bcrypt is a password hashing function and it is used to hash the password
