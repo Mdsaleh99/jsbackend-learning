@@ -25,7 +25,7 @@ const userSchema = new Schema(
             index: true,
             trim: true
         },
-        avtar:{
+        avatar:{
             type: String,   // cloudnary url
             required: true,    
         },
@@ -60,11 +60,12 @@ userSchema.pre("save", async function(next) {
 
 // custom hooks b bana sakte hai mongoose me 
 userSchema.methods.isPasswordCorrect = async function (password) {
-    return await bcrypt.compare(password, this.password)
+    return await bcrypt.compare(password, this.password)  // password jo hai o current user ka password hai jo login me password likta hai     and       this.password jo hai o database me saved wale user ka password hai
 }
 
+// Acess Token short lived hote hai aur Refresh Token long lived hote hai 
 userSchema.methods.generateAccessToken = function () {
-    jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
             username: this.username,
@@ -78,7 +79,7 @@ userSchema.methods.generateAccessToken = function () {
     )
 }
 userSchema.methods.generateRefreshToken = function () {
-    jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
         },

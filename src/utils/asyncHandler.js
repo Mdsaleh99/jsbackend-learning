@@ -1,9 +1,7 @@
 // ye wrapper function banaya hai humne jo har jagah use karne wale hai
 const asyncHandler = (requsetHandler) => {
     return (req, res, next) => {
-        Promise
-        .resolve(requsetHandler(req, res, next))
-        .catch((error) => next(error))
+        Promise.resolve(requsetHandler(req, res, next)).catch((err) => next(err))
     }
 }
 
